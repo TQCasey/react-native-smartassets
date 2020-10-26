@@ -16,7 +16,7 @@ function getSourceCodeScriptURL(): ?string {
 	_sourceCodeScriptURL = sourceCode.scriptURL;
 	return _sourceCodeScriptURL;
 }
-const defaultMainBundePath = '';//Smartassets.DefaultMainBundlePath;
+const defaultMainBundePath = Smartassets.DefaultMainBundlePath;
 var _ = require('lodash');
 var SmartAssets= {
 	initSmartAssets(){
@@ -58,10 +58,11 @@ var SmartAssets= {
 				}
 				let iOSAsset = this.scaledAssetURLNearBundle();
 				let isFileExist =  Smartassets.isFileExist(iOSAsset.uri);
+				
 				if(isFileExist) {
 					return iOSAsset;
 				}else{
-					let oriJsBundleUrl = 'file://'+defaultMainBundePath+'/'+iOSRelateMainBundlePath;
+					let oriJsBundleUrl = 'file://'+defaultMainBundePath+'/'+iOSRelateMainBundlePath + "/";
 					iOSAsset.uri = iOSAsset.uri.replace(this.jsbundleUrl, oriJsBundleUrl);
 					return iOSAsset;
 				}
